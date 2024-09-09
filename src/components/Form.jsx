@@ -1,9 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Form() {
-  const [size, setSize] = useState(["küçük", "orta", "büyük"]);
-  const [breadType, setBreadType] = useState(["ince hamur", "kalın hamur"]);
-  const [extras, setExtras] = useState([
+  const extras = [
     "Pepperoni",
     "Tavuk Izgara",
     "Mısır",
@@ -18,7 +17,15 @@ function Form() {
     "Domates",
     "Jalepeno",
     "Sucuk",
-  ]);
+  ];
+  const [size, setSize] = useState(["küçük", "orta", "büyük"]);
+  const [breadType, setBreadType] = useState(["ince hamur", "kalın hamur"]);
+  const [selectedExtras, setSelectedExtras] = useState([]);
+
+  function handleSelectExtras(extra) {
+    setSelectedExtras([...selectedExtras, extra]);
+  }
+
   return (
     <div className="flex flex-col items-center h-[1340px] ">
       <div className="w-[532px] font-barlow">
@@ -117,10 +124,10 @@ function Form() {
                 </button>
               </div>
               <div className="w-[350px]  border-slate-200 border rounded-md flex flex-col justify-center -items-center ">
-                <h3 className="font-semibold text-[20px] leading-[24px] mb-[22px] pt-[42px] pl-[50px]">
+                <h3 className="font-semibold text-[20px] leading-[24px] mb-[22px] pt-[42px] -[50px]">
                   Sipariş Toplamı
                 </h3>
-                <div className="flex flex-col gap-3 py-[42px] px-[50px] font-semibold text-[18px] leading-[24px] ">
+                <div className="flex flex-col gap-3 py-[42px] px-[50px]">
                   <div className="flex justify-between">
                     Seçimler <span>25.00₺</span>
                   </div>
@@ -128,9 +135,12 @@ function Form() {
                     Toplam <span>110.50₺</span>
                   </div>
                 </div>
-                <button className="h-[62px] rounded-md w-full bg-yellow ">
-                  SİPARİŞ VER
-                </button>
+                <Link to={`/success`}>
+                  {" "}
+                  <button className="h-[62px] rounded-md w-full bg-yellow ">
+                    SİPARİŞ VER
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

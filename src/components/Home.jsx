@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -11,9 +12,12 @@ function Home() {
         <h2 className="font-roboto font-light text-[86px] text-center leading-[92px] mt-10 w-[398px] md:w-full">
           KOD ACIKTIRIR <br /> PİZZA, DOYURUR
         </h2>
-        <button className="bg-yellow text-black rounded-[50px] w-[193px] h-[56px] font-barlow font-semibold mt-10">
-          ACIKTIM
-        </button>
+        <Link to={`/order`}>
+          {" "}
+          <button className="bg-yellow text-black rounded-[50px] w-[193px] h-[56px] font-barlow font-semibold mt-10">
+            ACIKTIM
+          </button>
+        </Link>
       </div>
     </div>
   );

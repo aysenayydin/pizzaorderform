@@ -1,18 +1,27 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./Header";
-import Form from "./Form";
-import Home from "./Home";
-import Success from "./Success";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import Home from "./components/Home";
+import Success from "./components/Success";
+import { Switch } from "react-router-dom";
+import { Route } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   return (
     <>
-      <Home />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
 
-      <Header />
-      <Form />
-      <Success />
+        <Route path="/order">
+          <Form />
+        </Route>
+        <Route path="/success">
+          <Success />
+        </Route>
+      </Switch>
     </>
   );
 }
