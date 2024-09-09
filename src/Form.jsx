@@ -20,8 +20,8 @@ function Form() {
     "Sucuk",
   ]);
   return (
-    <div className="flex flex-col items-center h-[1340px] font-barlow">
-      <div className="w-[532px]">
+    <div className="flex flex-col items-center h-[1340px] ">
+      <div className="w-[532px] font-barlow">
         <h2 className=" leading-[29px] font-semibold text-[22px] mt-8 h-[56px]">
           Position Absolute Acı Pizza
         </h2>
@@ -37,7 +37,7 @@ function Form() {
               <span>(200)</span>
             </div>
           </div>
-          <div className="mt-4 font-barlow">
+          <div className="mt-4">
             Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı
             pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
             diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
@@ -91,24 +91,46 @@ function Form() {
                 </label>
               ))}
             </div>
-            <div>
-              <h3>Sipariş Notu</h3>
-              <textarea />
-              <hr />
-            </div>
-            <div>
-              <div className="flex">
-                <button>-</button>
-                <div>1</div>
-                <button>+</button>
+            <div className=" mt-10">
+              <h3 className="font-semibold text-[20px] mb-4 leading-[24px] ">
+                Sipariş Notu
+              </h3>
+              <div className="border w-[531px] h-[56px] p-2 rounded-md flex mb-9">
+                <textarea
+                  className=" w-full "
+                  placeholder="Siparişine eklemek istediğin bir not var mı?"
+                />
               </div>
-              <div>
-                <h3>Sipariş Toplamı</h3>
-                <div>
-                  <div>Seçimler</div> <div>25.00₺</div>
-                  <div>Toplam</div> <div>110.50₺</div>
+
+              <hr className="mb-10" />
+            </div>
+            <div className="flex justify-between items-start ">
+              <div className="flex ">
+                <button className="w-[56px] h-[56px] flex items-center justify-center bg-yellow rounded-l-lg">
+                  -
+                </button>
+                <div className="w-[56px] h-[56px] flex items-center justify-center border-slate-200 border">
+                  1
                 </div>
-                <button>SİPARİŞ VER</button>
+                <button className="w-[56px] h-[56px] flex items-center justify-center bg-yellow rounded-r-lg">
+                  +
+                </button>
+              </div>
+              <div className="w-[350px]  border-slate-200 border rounded-md flex flex-col justify-center -items-center ">
+                <h3 className="font-semibold text-[20px] leading-[24px] mb-[22px] pt-[42px] pl-[50px]">
+                  Sipariş Toplamı
+                </h3>
+                <div className="flex flex-col gap-3 py-[42px] px-[50px] font-semibold text-[18px] leading-[24px] ">
+                  <div className="flex justify-between">
+                    Seçimler <span>25.00₺</span>
+                  </div>
+                  <div className="flex justify-between text-red">
+                    Toplam <span>110.50₺</span>
+                  </div>
+                </div>
+                <button className="h-[62px] rounded-md w-full bg-yellow ">
+                  SİPARİŞ VER
+                </button>
               </div>
             </div>
           </div>
