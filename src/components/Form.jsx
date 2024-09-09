@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Form() {
@@ -21,10 +21,27 @@ function Form() {
   const [size, setSize] = useState(["küçük", "orta", "büyük"]);
   const [breadType, setBreadType] = useState(["ince hamur", "kalın hamur"]);
   const [selectedExtras, setSelectedExtras] = useState([]);
+  const [name, setName] = useState("");
 
-  function handleSelectExtras(extra) {
-    setSelectedExtras([...selectedExtras, extra]);
+  function handleNameChange(event) {
+    const name = event.target.value;
+    setName(name);
   }
+
+  function handleSelectExtras(event) {
+    const { type, checked, value } = event.target;
+    console.log(event);
+    if (checked) {
+      setSelectedExtras([...selectedExtras, value]);
+    } else {
+      const newSelectedExtras = selectedExtras.filter((a) => a !== value);
+      setSelectedExtras(newSelectedExtras);
+    }
+  }
+
+  useEffect(() => {
+    console.log(selectedExtras);
+  }, [selectedExtras]);
 
   return (
     <div className="flex flex-col items-center h-[1340px] ">
@@ -93,12 +110,24 @@ function Form() {
             <div className="flex flex-wrap gap-5 w-[500px] mt-10 font-bold text-[16px] text-[#5F5F5F]">
               {extras.map((e) => (
                 <label className="basis-36" htmlFor="extra" key={e}>
-                  <input type="checkbox" className="mr-1" />
+                  <input
+                    type="checkbox"
+                    className="mr-1"
+                    onChange={handleSelectExtras}
+                    value={e}
+                  />
                   {e}
                 </label>
               ))}
             </div>
             <div className=" mt-10">
+              <h2>İsim-Soyisim</h2>
+              <input
+                type="text"
+                name="name"
+                className="border"
+                onChange={handleNameChange}
+              />
               <h3 className="font-semibold text-[20px] mb-4 leading-[24px] ">
                 Sipariş Notu
               </h3>
@@ -137,7 +166,13 @@ function Form() {
                 </div>
                 <Link to={`/success`}>
                   {" "}
-                  <button className="h-[62px] rounded-md w-full bg-yellow ">
+                  <button
+                    className="h-[62px] rounded-md w-full bg-yellow "
+                    disabled={
+                      name.length < 3 &&
+                      (selectedExtras.length < 4 || selectedExtras.length > 10)
+                    }
+                  >
                     SİPARİŞ VER
                   </button>
                 </Link>
