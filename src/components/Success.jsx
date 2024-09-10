@@ -2,11 +2,11 @@ import React from "react";
 
 function Success() {
   return (
-    <div className="bg-red w-full h-[1080px] flex flex-col justify-center items-center relative ">
-      <h1 className="font-londrina text-[50px] text-white absolute top-[149px]">
+    <div className="bg-red w-full h-screen flex flex-col justify-center items-center relative ">
+      <h1 className="font-londrina text-5xl text-white absolute top-36">
         Teknolojik Yemekler
       </h1>
-      <h2 className="text-white md:text-[86px] text-[72px] text-center font-roboto font-light leading-[92px]">
+      <h2 className="text-white md:text-8xl text-7xl text-center font-roboto font-light ">
         TEBRİKLER!
         <br />
         SİPARİŞİNİZ ALINDI!

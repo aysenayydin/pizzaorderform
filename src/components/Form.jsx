@@ -27,9 +27,9 @@ function Form() {
     extrasError: "Lütfen en az 4 en fazla 10 malzeme seçiniz.",
     nameError: "Lütfen adınızı en az 3 harf giriniz.",
   };
-
   const breadTypes = ["İnce hamur", "Kalın hamur"];
   const sizes = ["Küçük", "Orta", "Büyük"];
+
   const [size, setSize] = useState("");
   const [breadType, setBreadType] = useState("");
   const [selectedExtras, setSelectedExtras] = useState([]);
@@ -40,26 +40,9 @@ function Form() {
 
   let history = useHistory();
 
-  // Miktar artırma fonksiyonu
-  function increaseQuantity(e) {
-    e.preventDefault();
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  }
-
-  // Miktar azaltma fonksiyonu
-  function decreaseQuantity(e) {
-    e.preventDefault();
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-  }
-
-  function handleNameChange(event) {
-    const name = event.target.value;
-    setName(name);
-  }
   function handleSizeChange(event) {
     setSize(event.target.value); // Boyut değişikliği
   }
-
   function handleBreadChange(event) {
     setBreadType(event.target.value); // Hamur değişikliği
   }
@@ -80,8 +63,24 @@ function Form() {
     }
   }
 
+  function handleNameChange(event) {
+    const name = event.target.value;
+    setName(name);
+  }
+
   function handleNoteChange(event) {
     setNote(event.target.value);
+  }
+
+  // Miktar artırma
+  function increaseQuantity(e) {
+    e.preventDefault();
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  }
+  // Miktar azaltma
+  function decreaseQuantity(e) {
+    e.preventDefault();
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   }
 
   useEffect(() => {
@@ -139,15 +138,13 @@ function Form() {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center h-[1340px] ">
           <div className="w-[532px] font-barlow">
-            <h2 className=" leading-[29px] font-semibold text-[22px] mt-8 h-[56px]">
+            <h2 className=" leading-7 font-semibold text-2xl mt-8 h-14">
               Position Absolute Acı Pizza
             </h2>
             <div>
               <div className="flex gap-80 items-center">
                 <div>
-                  <span className="text-[28px] leading-[37px] font-bold ">
-                    85.50₺
-                  </span>
+                  <span className="text-3xl leading-9 font-bold ">85.50₺</span>
                 </div>
                 <div className="flex gap-14">
                   <span>4.9</span>
@@ -166,7 +163,7 @@ function Form() {
               <div>
                 <div className="flex gap-32 mt-10 w-[420px] ">
                   <div className="flex flex-col gap-4">
-                    <span className="font-semibold text-[20px]">
+                    <span className="font-semibold text-xl">
                       Boyut Seç
                       <span className="text-red ">*</span>
                     </span>
@@ -190,8 +187,8 @@ function Form() {
                       <span className="text-red">{error.sizeError}</span>
                     )}
                   </div>
-                  <div className="leading-[29px] ">
-                    <span className=" font-semibold text-[20px]">
+                  <div className="leading-7 ">
+                    <span className=" font-semibold text-xl">
                       Hamur Seç<span className="text-red ">*</span>
                     </span>
 
@@ -220,12 +217,12 @@ function Form() {
                 </div>
 
                 <div>
-                  <div className="mt-10 font-semibold text-[20px] leading-[24px] mb-3">
+                  <div className="mt-10 font-semibold text-xl leading-6 mb-3">
                     Ek Malzemeler
                   </div>
                   <h3>En Fazla 10 malzeme seçebilirsiniz. 5₺</h3>
                 </div>
-                <div className="flex flex-wrap gap-5 w-[500px] mt-10 font-bold text-[16px] text-[#5F5F5F]">
+                <div className="flex flex-wrap gap-5 w-[500px] mt-10 font-bold text-base text-[#5F5F5F]">
                   {extras.map((e) => (
                     <label className="md:basis-36 basis-48" htmlFor={e} key={e}>
                       <input
@@ -247,9 +244,7 @@ function Form() {
                   )}
                 </div>
                 <div className=" mt-10">
-                  <h2 className="font-semibold text-[20px] leading-[24px] mb-3">
-                    İsim
-                  </h2>
+                  <h2 className="font-semibold text-xl leading-6 mb-3">İsim</h2>
                   <input
                     data-cy="name"
                     type="text"
@@ -260,10 +255,10 @@ function Form() {
                   {error.nameError !== "" && (
                     <div className="text-red mb-10">{error.nameError}</div>
                   )}
-                  <h3 className="font-semibold text-[20px] mb-4 leading-[24px]">
+                  <h3 className="font-semibold text-xl mb-4 leading-6">
                     Sipariş Notu
                   </h3>
-                  <div className="border w-[531px] h-[56px] p-2 rounded-md flex mb-9">
+                  <div className="border w-[531px] h-14 p-2 rounded-md flex mb-9">
                     <textarea
                       onChange={handleNoteChange}
                       className=" w-full "
@@ -277,33 +272,37 @@ function Form() {
                 <div className="flex justify-between items-start ">
                   <div className="flex ">
                     <button
-                      className="w-[56px] h-[56px] flex items-center justify-center bg-yellow rounded-l-lg"
+                      className="w-14 h-14 flex items-center justify-center bg-yellow rounded-l-lg"
                       onClick={decreaseQuantity}
                     >
                       -
                     </button>
-                    <div className="w-[56px] h-[56px] flex items-center justify-center border-slate-200 border">
+                    <div className="w-14 h-14 flex items-center justify-center border-slate-200 border">
                       {quantity}
                     </div>
                     <button
-                      className="w-[56px] h-[56px] flex items-center justify-center bg-yellow rounded-r-lg"
+                      className="w-14 h-14 flex items-center justify-center bg-yellow rounded-r-lg"
                       onClick={increaseQuantity}
                     >
                       +
                     </button>
                   </div>
-                  <div className="w-[350px]  border-slate-200 border rounded-md flex flex-col justify-center -items-center ">
-                    <h3 className="font-semibold text-[20px] leading-[24px] mb-[22px] pt-[42px] -[50px]">
+
+                  <div className="w-[350px] font-semibold border-slate-200 border rounded-md flex flex-col justify-center mb-40 ">
+                    <h3 className=" text-xl leading-7 mb-5 pt-10 ml-12">
                       Sipariş Toplamı
                     </h3>
-                    <div className="flex flex-col gap-3 py-[42px] px-[50px]">
+                    <div className="flex flex-col gap-3 pb-5 px-12">
                       <div className="flex justify-between">
-                        Seçimler <span>{selectedExtras.length * 5}₺</span>
+                        Seçimler{" "}
+                        <span>{selectedExtras.length * 5 * quantity}₺</span>
                       </div>
                       <div className="flex justify-between text-red">
                         Toplam{" "}
                         <span>
-                          {quantity * 100 + selectedExtras.length * 5}₺
+                          {quantity * 100 +
+                            selectedExtras.length * 5 * quantity}
+                          ₺
                         </span>
                       </div>
                     </div>
@@ -312,7 +311,7 @@ function Form() {
                       type="submit"
                       data-cy="submit"
                       className={
-                        "h-[62px] rounded-md w-full bg-yellow " +
+                        "h-16 rounded-md w-full bg-yellow " +
                         `${
                           name.length < 3 ||
                           selectedExtras.length < 4 ||

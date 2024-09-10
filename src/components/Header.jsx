@@ -9,7 +9,7 @@ function Header() {
         </h1>
         <div className="absolute bottom-0 ">
           <div className="w-[532px] relative">
-            <div className="absolute bottom-[21px] left-0 text-white text-[16px]">
+            <div className="absolute bottom-5 left-0 text-white text-base">
               Anasayfa-Sipariş Oluştur
             </div>
           </div>
