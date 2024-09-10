@@ -21,6 +21,13 @@ function Form() {
     "Jalepeno",
     "Kekik",
   ];
+  const errors = {
+    sizeError: "Lütfen boyut seçimin yapınız.",
+    breadError: "Lütfen hamur kalınlığını seçiniz.",
+    extrasError: "Lütfen en az 4 en fazla 10 malzeme seçiniz.",
+    nameError: "Lütfen adınızı en az 3 harf giriniz.",
+  };
+
   const breadTypes = ["İnce hamur", "Kalın hamur"];
   const sizes = ["Küçük", "Orta", "Büyük"];
   const [size, setSize] = useState("");
@@ -29,6 +36,7 @@ function Form() {
   const [name, setName] = useState("");
   const [note, setNote] = useState(""); // Sipariş notu
   const [quantity, setQuantity] = useState(1); // Miktar için
+  const [error, setError] = useState({});
 
   let history = useHistory();
 
@@ -76,8 +84,30 @@ function Form() {
     setNote(event.target.value);
   }
 
+  useEffect(() => {
+    setError((prevError) => ({
+      ...prevError,
+      sizeError: size === "" ? errors.sizeError : "",
+      breadError: breadType === "" ? errors.breadError : "",
+      extrasError:
+        selectedExtras.length < 4 || selectedExtras.length > 10
+          ? errors.extrasError
+          : "",
+      nameError: name.length < 3 ? errors.nameError : "",
+    }));
+    console.log(error);
+  }, [size, breadType, selectedExtras, name]);
+
   function handleSubmit(event) {
     event.preventDefault();
+    if (
+      error.sizeError !== "" ||
+      error.breadError !== "" ||
+      error.nameError !== "" ||
+      error.extrasError !== ""
+    ) {
+      return;
+    }
     const payload = {
       isim: name,
       boyut: size,
@@ -144,6 +174,7 @@ function Form() {
                     {sizes.map((s) => (
                       <label htmlFor={s} className="block" key={s}>
                         <input
+                          data-cy="size"
                           id={s}
                           type="radio"
                           name="size"
@@ -155,6 +186,9 @@ function Form() {
                         {s}
                       </label>
                     ))}
+                    {error.sizeError !== "" && (
+                      <span className="text-red">{error.sizeError}</span>
+                    )}
                   </div>
                   <div className="leading-[29px] ">
                     <span className=" font-semibold text-[20px]">
@@ -163,6 +197,8 @@ function Form() {
 
                     <label htmlFor="bread" className="block border">
                       <select
+                        data-cy="breadType"
+                        id="bread"
                         name="bread"
                         onChange={handleBreadChange}
                         defaultValue=""
@@ -177,6 +213,9 @@ function Form() {
                         ))}{" "}
                       </select>
                     </label>
+                    {error.breadError !== "" && (
+                      <span className="text-red">{error.breadError}</span>
+                    )}
                   </div>
                 </div>
 
@@ -201,17 +240,26 @@ function Form() {
                       {e}
                     </label>
                   ))}
+                  {error.extrasError !== "" && (
+                    <span data-cy="extras" className="text-red font-normal">
+                      {error.extrasError}
+                    </span>
+                  )}
                 </div>
                 <div className=" mt-10">
                   <h2 className="font-semibold text-[20px] leading-[24px] mb-3">
                     İsim
                   </h2>
                   <input
+                    data-cy="name"
                     type="text"
                     name="name"
-                    className="border rounded mb-10 h-10 px-2"
+                    className="border rounded mb-2 h-10 px-2"
                     onChange={handleNameChange}
                   />
+                  {error.nameError !== "" && (
+                    <div className="text-red mb-10">{error.nameError}</div>
+                  )}
                   <h3 className="font-semibold text-[20px] mb-4 leading-[24px]">
                     Sipariş Notu
                   </h3>
@@ -262,6 +310,7 @@ function Form() {
 
                     <button
                       type="submit"
+                      data-cy="submit"
                       className={
                         "h-[62px] rounded-md w-full bg-yellow " +
                         `${
