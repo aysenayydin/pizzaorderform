@@ -233,12 +233,16 @@ function Form() {
                         name={e}
                         checked={selectedExtras.includes(e)}
                         id={e}
+                        data-cy="extras"
                       />
                       {e}
                     </label>
                   ))}
                   {error.extrasError !== "" && (
-                    <span data-cy="extras" className="text-red font-normal">
+                    <span
+                      data-cy="extras-error"
+                      className="text-red font-normal"
+                    >
                       {error.extrasError}
                     </span>
                   )}
@@ -253,7 +257,9 @@ function Form() {
                     onChange={handleNameChange}
                   />
                   {error.nameError !== "" && (
-                    <div className="text-red mb-10">{error.nameError}</div>
+                    <div data-cy="name-error" className="text-red mb-10">
+                      {error.nameError}
+                    </div>
                   )}
                   <h3 className="font-semibold text-xl mb-4 leading-6">
                     Sipariş Notu
