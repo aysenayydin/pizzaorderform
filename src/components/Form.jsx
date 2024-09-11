@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import OrderSummary from "./OrderSummary";
+import Footer from "./Footer";
 
 function Form() {
   const extras = [
@@ -22,7 +24,7 @@ function Form() {
     "Kekik",
   ];
   const errors = {
-    sizeError: "Lütfen boyut seçimin yapınız.",
+    sizeError: "Lütfen boyut seçimi yapınız.",
     breadError: "Lütfen hamur kalınlığını seçiniz.",
     extrasError: "Lütfen en az 4 en fazla 10 malzeme seçiniz.",
     nameError: "Lütfen adınızı en az 3 harf giriniz.",
@@ -40,6 +42,9 @@ function Form() {
   const [isValid, setIsValid] = useState(false);
 
   let history = useHistory();
+
+  const totalSelections = selectedExtras.length * 5 * quantity;
+  const totalPrice = quantity * 100 + totalSelections;
 
   function handleSizeChange(event) {
     setSize(event.target.value); // Boyut değişikliği
@@ -134,7 +139,10 @@ function Form() {
         setSelectedExtras([]);
         setNote("");
         setQuantity(1);
-        history.push("/success");
+        history.push({
+          pathname: "/success",
+          state: { orderSummary: response.data, totalSelections, totalPrice },
+        });
       })
       .catch((error) => {
         console.error("Sipariş Hatası:", error);
@@ -145,7 +153,7 @@ function Form() {
     <>
       <Header />
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center h-[1340px] ">
+        <div className="flex flex-col items-center">
           <div className="w-[532px] font-barlow">
             <h2 className=" leading-7 font-semibold text-2xl mt-8 h-14">
               Position Absolute Acı Pizza
@@ -262,7 +270,7 @@ function Form() {
                     data-cy="name"
                     type="text"
                     name="name"
-                    className="border rounded mb-2 h-10 px-2"
+                    className="border w-[531px] rounded mb-2 h-10 px-2"
                     onChange={handleNameChange}
                   />
                   {error.nameError !== "" && (
@@ -304,23 +312,10 @@ function Form() {
                   </div>
 
                   <div className="w-[350px] font-semibold border-slate-200 border rounded-md flex flex-col justify-center mb-40 ">
-                    <h3 className=" text-xl leading-7 mb-5 pt-10 ml-12">
-                      Sipariş Toplamı
-                    </h3>
-                    <div className="flex flex-col gap-3 pb-5 px-12">
-                      <div className="flex justify-between">
-                        Seçimler{" "}
-                        <span>{selectedExtras.length * 5 * quantity}₺</span>
-                      </div>
-                      <div className="flex justify-between text-red">
-                        Toplam{" "}
-                        <span>
-                          {quantity * 100 +
-                            selectedExtras.length * 5 * quantity}
-                          ₺
-                        </span>
-                      </div>
-                    </div>
+                    <OrderSummary
+                      totalSelections={totalSelections}
+                      totalPrice={totalPrice}
+                    />
 
                     <button
                       type="submit"
@@ -330,6 +325,7 @@ function Form() {
                         `${!isValid ? "opacity-50" : "opacity-100"}`
                       }
                       disabled={!isValid}
+                      onClick={handleSubmit}
                     >
                       SİPARİŞ VER
                     </button>
@@ -340,6 +336,7 @@ function Form() {
           </div>
         </div>
       </form>
+      <Footer />
     </>
   );
 }

@@ -3,17 +3,10 @@ import React from "react";
 function Header() {
   return (
     <div>
-      <div className="bg-red h-[207px] flex justify-center items-center relative ">
+      <div className="bg-red h-[138px] flex justify-center items-center relative ">
         <h1 className="font-londrina text-white text-4xl">
           Teknolojik Yemekler
         </h1>
-        <div className="absolute bottom-0 ">
-          <div className="w-[532px] relative">
-            <div className="absolute bottom-5 left-0 text-white text-base">
-              Anasayfa-Sipariş Oluştur
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
