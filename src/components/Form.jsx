@@ -37,6 +37,7 @@ function Form() {
   const [note, setNote] = useState(""); // Sipariş notu
   const [quantity, setQuantity] = useState(1); // Miktar için
   const [error, setError] = useState({});
+  const [isValid, setIsValid] = useState(false);
 
   let history = useHistory();
 
@@ -97,14 +98,22 @@ function Form() {
     console.log(error);
   }, [size, breadType, selectedExtras, name]);
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  useEffect(() => {
     if (
       error.sizeError !== "" ||
       error.breadError !== "" ||
       error.nameError !== "" ||
       error.extrasError !== ""
     ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [error]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (!isValid) {
       return;
     }
     const payload = {
@@ -318,23 +327,9 @@ function Form() {
                       data-cy="submit"
                       className={
                         "h-16 rounded-md w-full bg-yellow " +
-                        `${
-                          name.length < 3 ||
-                          selectedExtras.length < 4 ||
-                          selectedExtras.length > 10 ||
-                          size == "" ||
-                          breadType == ""
-                            ? "opacity-50"
-                            : "opacity-100"
-                        }`
+                        `${!isValid ? "opacity-50" : "opacity-100"}`
                       }
-                      disabled={
-                        name.length < 3 ||
-                        selectedExtras.length < 4 ||
-                        selectedExtras.length > 10 ||
-                        size == "" ||
-                        breadType == ""
-                      }
+                      disabled={!isValid}
                     >
                       SİPARİŞ VER
                     </button>
