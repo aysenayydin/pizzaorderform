@@ -116,6 +116,10 @@ function Form() {
     }
   }, [error]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function handleSubmit(event) {
     event.preventDefault();
     if (!isValid) {
