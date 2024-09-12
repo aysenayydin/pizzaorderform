@@ -6,23 +6,19 @@ import Pizzacard from "./pizzacard";
 function Home() {
   return (
     <>
-      <div className="h-[1080px] flex items-end bg-red flex-col justify-end items-center">
-        <div className="bg-[url('/pizza-home.png')] bg-bottom md:bg-contain bg-cover bg-no-repeat md:h-full h-1/3 absolute flex justify-center md:w-[1363px] w-full">
-          <img src="/spices.png" className="absolute top-60 hidden md:block" />
-        </div>
-        <div className="flex flex-col items-center mt-14 absolute top-0  text-white">
+     
+        <div className=" bg-[url('assets/Iteration-1-assets/home-banner.png')] bg-cover bg-no-repeat flex justify-center "> 
+        <div className="flex flex-col items-center text-white pb-64 pt-10">
           <h1 className="font-londrina text-5xl mb-12">Teknolojik Yemekler</h1>
           <div className="flex flex-col items-center">
             <p className="font-satisfy text-yellow text-3xl ">
               fırsatı kaçırma
             </p>
-            <h2 className="font-roboto font-light text-7xl text-center leading-[5.5rem]  w-[398px] md:w-full">
+            <h2 className="font-roboto font-light text-7xl text-center leading-[5.5rem]  w-[398px] md:w-full ">
               KOD ACIKTIRIR <br /> PİZZA, DOYURUR
             </h2>
-
             <Link to={`/order`}>
-              {" "}
-              <button className="bg-yellow text-black rounded-full w-[193px] h-14 font-barlow font-semibold mt-10">
+              <button className="bg-yellow text-black rounded-full w-[193px] h-14 font-barlow font-semibold ">
                 ACIKTIM
               </button>
             </Link>

@@ -40,6 +40,12 @@ function Form() {
   const [quantity, setQuantity] = useState(1); // Miktar için
   const [error, setError] = useState({});
   const [isValid, setIsValid] = useState(false);
+  const [touch, setTouch] = useState({
+   boyut: false,
+    hamur: false,
+    malzeme: false,
+    isim: false,
+  });
 
   let history = useHistory();
 
@@ -48,13 +54,16 @@ function Form() {
 
   function handleSizeChange(event) {
     setSize(event.target.value); // Boyut değişikliği
+    setTouch((prev) => ({ ...prev, boyut: true }));
   }
   function handleBreadChange(event) {
     setBreadType(event.target.value); // Hamur değişikliği
+    setTouch((prev) => ({ ...prev, hamur: true }));
   }
 
   function handleSelectExtras(event) {
     const { checked, value } = event.target;
+    setTouch((prev) => ({ ...prev, malzeme: true }));
     if (selectedExtras.length >= 10) {
       event.preventDefault();
       event.target.checked = false;
@@ -72,6 +81,7 @@ function Form() {
   function handleNameChange(event) {
     const name = event.target.value;
     setName(name);
+    setTouch((prev) => ({ ...prev, isim: true }));
   }
 
   function handleNoteChange(event) {
@@ -204,7 +214,7 @@ function Form() {
                         {s}
                       </label>
                     ))}
-                    {error.sizeError !== "" && (
+                    {touch.boyut && error.sizeError !== "" && (
                       <span className="text-red">{error.sizeError}</span>
                     )}
                   </div>
@@ -231,7 +241,7 @@ function Form() {
                         ))}{" "}
                       </select>
                     </label>
-                    {error.breadError !== "" && (
+                    {touch.hamur && error.breadError !== "" && (
                       <span className="text-red">{error.breadError}</span>
                     )}
                   </div>
@@ -259,7 +269,7 @@ function Form() {
                       {e}
                     </label>
                   ))}
-                  {error.extrasError !== "" && (
+                  {touch.malzeme && error.extrasError !== "" && (
                     <span
                       data-cy="extras-error"
                       className="text-red font-normal"
@@ -277,7 +287,7 @@ function Form() {
                     className="border w-[531px] rounded mb-2 h-10 px-2"
                     onChange={handleNameChange}
                   />
-                  {error.nameError !== "" && (
+                  {touch.isim && error.nameError !== "" && (
                     <div data-cy="name-error" className="text-red mb-10">
                       {error.nameError}
                     </div>
