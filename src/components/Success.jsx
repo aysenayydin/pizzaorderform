@@ -3,11 +3,17 @@ import { useLocation } from "react-router-dom";
 import OrderSummary from "./OrderSummary";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useEffect } from "react";
 
-function Success({formData}) {
-  console.log("State Lift Data: ", formData)
+function Success({ formData }) {
+  console.log("State Lift Data: ", formData);
   const location = useLocation();
-  const { orderSummary, totalPrice, totalSelections,quickPrice } = location.state || {}; // Eğer state yoksa boş bir nesne dön
+  const { orderSummary, totalPrice, totalSelections, quickPrice } =
+    location.state || {}; // Eğer state yoksa boş bir nesne dön
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -20,7 +26,7 @@ function Success({formData}) {
           SİPARİŞİN ALINDI!
         </h2>
         <p className="text-3xl text-white">Position Absolute Pizza</p>
-       
+
         <div className="text-white text-xl pt-10 ">
           <div>
             <span className="font-light">Boyut: </span>
