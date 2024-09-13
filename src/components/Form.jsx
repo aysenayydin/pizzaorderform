@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import OrderSummary from "./OrderSummary";
 import Footer from "./Footer";
 
-function Form() {
+function Form(props) {
+  const{setFormData}=props;
   const extras = [
     "Pepperoni",
     "Tavuk Izgara",
@@ -47,11 +48,24 @@ function Form() {
     malzeme: false,
     isim: false,
   });
+  const quickDeliveryPrice = 50;
+  const [quickDelivery, setQuickDelivery] = useState(false);
 
   let history = useHistory();
 
   const totalSelections = selectedExtras.length * 5 * quantity;
-  const totalPrice = quantity * 100 + totalSelections;
+  let totalPrice = quantity * 100 + totalSelections;
+  if (quickDelivery === true) {
+    totalPrice = totalPrice + quickDeliveryPrice;
+  }
+
+  function handleDeliveryPrice(event) {
+    if (event.target.checked) {
+      setQuickDelivery(true);
+    } else {
+      setQuickDelivery(false);
+    }
+  }
 
   function handleSizeChange(event) {
     setSize(event.target.value); // Boyut değişikliği
@@ -144,6 +158,7 @@ function Form() {
       not: note,
       adet: quantity,
     };
+    setFormData(payload);
     axios
       .post("https://reqres.in/api/pizza", payload)
       .then((response) => {
@@ -154,13 +169,23 @@ function Form() {
         setSelectedExtras([]);
         setNote("");
         setQuantity(1);
+        setQuickDelivery(false)
         history.push({
           pathname: "/success",
-          state: { orderSummary: response.data, totalSelections, totalPrice },
+          state: {
+            orderSummary: response.data,
+            totalSelections,
+            totalPrice,
+            quickPrice: quickDelivery ? quickDeliveryPrice : 0,
+          },
         });
       })
       .catch((error) => {
         console.error("Sipariş Hatası:", error);
+        if (!error.response) {
+          // Ağ hatası veya internet bağlantısı yok
+          alert("Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.");
+        }
       });
   }
 
@@ -260,9 +285,9 @@ function Form() {
                 </div>
                 <h3>En Fazla 10 malzeme seçebilirsiniz. 5₺</h3>
               </div>
-              <div className="flex flex-wrap gap-5 w-[500px] mt-10 font-bold text-base text-[#5F5F5F]">
+              <div className="flex flex-wrap gap-7 w-[600px] mt-10 font-bold text-base text-[#5F5F5F] ">
                 {extras.map((e) => (
-                  <label className="md:basis-36 basis-48" htmlFor={e} key={e}>
+                  <label className="container md:basis-40 basis-48" htmlFor={e} key={e}>
                     <input
                       type="checkbox"
                       className="mr-1"
@@ -273,6 +298,7 @@ function Form() {
                       id={e}
                       data-cy="extras"
                     />
+                    <span className="checkmark"></span>
                     {e}
                   </label>
                 ))}
@@ -296,18 +322,30 @@ function Form() {
                     {error.nameError}
                   </div>
                 )}
-                <h3 className="font-semibold text-xl mb-4 leading-6">
+                <h3 className="font-semibold text-xl mb-4 leading-6 ">
                   Sipariş Notu
                 </h3>
-                <div className="border w-[531px] h-14 p-2 rounded-md flex mb-9">
-                  <textarea
+
+                <div className="border w-[531px] h-14  rounded-md flex mb-9 ">
+                  <textarea 
                     onChange={handleNoteChange}
-                    className=" w-full "
+                    className=" w-full bg-[#FAF7F2] p-3"
                     value={note}
                     placeholder="Siparişine eklemek istediğin bir not var mı?"
                   />
                 </div>
-
+                <label className="container">
+                <input
+                  type="checkbox"
+                  name="quickdel"
+                  onChange={handleDeliveryPrice}
+              
+                />
+                 
+                <span className=" checkmark"> </span>
+                <div >Hızlı Teslimat <span className="text-red">50₺</span> </div>
+              
+                </label>
                 <hr className="mb-10" />
               </div>
               <div className="flex justify-between items-start ">
@@ -333,6 +371,7 @@ function Form() {
                   <OrderSummary
                     totalSelections={totalSelections}
                     totalPrice={totalPrice}
+                    quickPrice={quickDelivery ? quickDeliveryPrice : 0}
                   />
 
                   <button

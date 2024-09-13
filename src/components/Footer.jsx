@@ -11,7 +11,7 @@ function Footer() {
             </h1>
             <div>
               <address>
-                <ul class="footer-address flex flex-col gap-6">
+                <ul className="footer-address flex flex-col gap-6">
                   <li className="flex gap-2 items-start">
                     <img
                       src="assets/Iteration-2-aseets/footer/icons/icon-1.png"

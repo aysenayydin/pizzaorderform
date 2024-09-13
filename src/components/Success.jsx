@@ -4,9 +4,10 @@ import OrderSummary from "./OrderSummary";
 import Footer from "./Footer";
 import Header from "./Header";
 
-function Success() {
+function Success({formData}) {
+  console.log("State Lift Data: ", formData)
   const location = useLocation();
-  const { orderSummary, totalPrice, totalSelections } = location.state || {}; // Eğer state yoksa boş bir nesne dön
+  const { orderSummary, totalPrice, totalSelections,quickPrice } = location.state || {}; // Eğer state yoksa boş bir nesne dön
 
   return (
     <>
@@ -18,6 +19,8 @@ function Success() {
         <h2 className="text-white md:text-8xl text-7xl text-center font-roboto font-light border-b border-white pb-20 ">
           SİPARİŞİN ALINDI!
         </h2>
+        <p className="text-3xl text-white">Position Absolute Pizza</p>
+       
         <div className="text-white text-xl pt-10 ">
           <div>
             <span className="font-light">Boyut: </span>
@@ -39,6 +42,7 @@ function Success() {
             totalSelections={totalSelections}
             totalPrice={totalPrice}
             page={"sonuc"}
+            quickPrice={quickPrice}
           />
         </div>
         <Footer />

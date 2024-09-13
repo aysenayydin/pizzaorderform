@@ -1,17 +1,18 @@
 import React from "react";
 
 function OrderSummary(props) {
-  const { totalPrice, totalSelections, page } = props;
+  const { totalPrice, totalSelections, page, quickPrice } = props;
+  console.log(props);
   return (
     <div
       className={`border border-[#FAF7F2] rounded flex flex-col justify-between ${
-        page === "sonuc" ? "w-[350px]" : ""
+        page === "sonuc" ? "w-[350px]" : "bg-beige"
       }`}
     >
       {" "}
       <h3
         className={`text-xl leading-7 mb-5 pt-10 ml-12 ${
-          page === "sonuc" ? "text-white" : ""
+          page==="sonuc1"?"bg-red":""
         }`}
       >
         Sipariş Toplamı
@@ -24,6 +25,14 @@ function OrderSummary(props) {
         >
           Seçimler <span>{totalSelections}₺</span>
         </div>
+        <div
+          className={`flex justify-between ${
+            page === "sonuc" ? "text-white" : ""
+          }`}
+        >
+          Hızlı Teslimat <span>{quickPrice? quickPrice+"₺":"Seçilmedi"}</span>
+        </div>
+
         <div
           className={`flex justify-between ${
             page === "sonuc" ? "text-white" : "text-red"

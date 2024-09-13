@@ -128,15 +128,15 @@ function Home() {
         <div className="flex justify-center gap-8 *:bg-white *:w-[419] *:h-[334] mt-8 pb-16">
           <Pizzacard
             src="assets/Iteration-2-aseets/pictures/food-1.png"
-            name="Terminal Pizza"
+            cname="Terminal Pizza"
           />
           <Pizzacard
             src="assets/Iteration-2-aseets/pictures/food-2.png"
-            name="Position Absolute Acı Pizza"
+            cname="Position Absolute Acı Pizza"
           />
           <Pizzacard
             src="assets/Iteration-2-aseets/pictures/food-3.png"
-            name="Position Absolute Acı Pizza"
+            cname="Position Absolute Acı Pizza"
           />
         </div>
       </div>

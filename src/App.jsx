@@ -5,8 +5,11 @@ import Home from "./components/Home";
 import Success from "./components/Success";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
+import { useState } from "react";
 
 function App() {
+  const [formData, setFormData] = useState({});
+
   return (
     <>
       <Switch>
@@ -14,11 +17,15 @@ function App() {
           <Home />
         </Route>
 
-        <Route path="/order">
-          <Form />
-        </Route>
-        <Route path="/success">
-          <Success />
+        <Route
+          path="/order"
+          render={() => <Form setFormData={setFormData} />}
+        ></Route>
+        <Route
+          path="/success"
+          render={() => <Success formData={formData} />}
+        >
+          
         </Route>
       </Switch>
     </>
