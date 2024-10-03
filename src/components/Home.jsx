@@ -6,7 +6,7 @@ import Pizzacard from "./Pizzacard";
 function Home() {
   return (
     <>
-      <div className=" bg-[url('assets/Iteration-1-assets/home-banner.png')] bg-cover bg-no-repeat flex justify-center ">
+      <div className=" bg-[url('Assets/Iteration-1-assets/home-banner.png')] bg-cover bg-no-repeat flex justify-center ">
         <div className="flex flex-col items-center text-white pb-64 pt-10">
           <h1 className="font-londrina text-5xl mb-12">Teknolojik Yemekler</h1>
           <div className="flex flex-col items-center">
@@ -27,29 +27,29 @@ function Home() {
       <div className="flex justify-center gap-14 h-24 *:gap-6 ">
         {" "}
         <div className="flex items-center">
-          <img src="assets/Iteration-2-aseets/icons/2.svg" alt="" />
+          <img src="Assets/Iteration-2-aseets/icons/2.svg" alt="" />
           Pizza
         </div>
         <div className="flex items-center">
-          <img src="assets/Iteration-2-aseets/icons/3.svg" alt="" />
+          <img src="Assets/Iteration-2-aseets/icons/3.svg" alt="" />
           Burger
         </div>
         <div className="flex items-center ">
-          <img src="assets/Iteration-2-aseets/icons/4.svg" alt="" />
+          <img src="Assets/Iteration-2-aseets/icons/4.svg" alt="" />
           Kızartmalar
         </div>
         <div className="flex items-center ">
-          <img src="assets/Iteration-2-aseets/icons/5.svg" alt="" />
+          <img src="Assets/Iteration-2-aseets/icons/5.svg" alt="" />
           Fast Food
         </div>
         <div className="flex items-center">
-          <img src="assets/Iteration-2-aseets/icons/6.svg" alt="" />
+          <img src="Assets/Iteration-2-aseets/icons/6.svg" alt="" />
           Gazlı İçecek
         </div>
       </div>
       <div className="bg-[#FAF7F2] ">
         <div className="flex justify-center pt-16 gap-4">
-          <div className="bg-[url('assets/Iteration-2-aseets/cta/kart-1.png')] w-[531px] h-[449px] bg-cover bg-no-repeat *:text-white rounded-md pt-12 pl-14 ">
+          <div className="bg-[url('Assets/Iteration-2-aseets/cta/kart-1.png')] w-[531px] h-[449px] bg-cover bg-no-repeat *:text-white rounded-md pt-12 pl-14 ">
             <h1 className="text-6xl font-quattrocento font-weigh pb-1">
               Özel <br />
               Lezzet Us
@@ -65,7 +65,7 @@ function Home() {
           </div>
 
           <div className=" flex flex-col gap-2">
-            <div className="bg-[url('assets/Iteration-2-aseets/cta/kart-2.png')] w-[531px] h-[220px] bg-cover bg-no-repeat rounded-md pt-6 pl-8">
+            <div className="bg-[url('Assets/Iteration-2-aseets/cta/kart-2.png')] w-[531px] h-[220px] bg-cover bg-no-repeat rounded-md pt-6 pl-8">
               <h2 className="text-3xl font-barlow font-semibold text-white ">
                 Hacklathon <br /> Burger Menü
               </h2>
@@ -76,7 +76,7 @@ function Home() {
                 </button>
               </Link>
             </div>
-            <div className="bg-[url('assets/Iteration-2-aseets/cta/kart-3.png')] w-[531px] h-[220px] bg-cover bg-no-repeat rounded-md pt-6 pl-8">
+            <div className="bg-[url('Assets/Iteration-2-aseets/cta/kart-3.png')] w-[531px] h-[220px] bg-cover bg-no-repeat rounded-md pt-6 pl-8">
               <h2 className="text-3xl font-barlow font-semibold text-black ">
                 <span className="text-red">Çoooook</span> hızlı
                 <br />
@@ -104,37 +104,37 @@ function Home() {
         <div className="flex justify-center gap-5 h-16 *:gap-2 *:border *:bg-white *:rounded-full *:px-6 mt-4 ">
           {" "}
           <div className="flex items-center hover:bg-dark-gray hover:text-white">
-            <img src="assets/Iteration-2-aseets/icons/2.svg " alt="" />
+            <img src="Assets/Iteration-2-aseets/icons/2.svg " alt="" />
             Pizza
           </div>
           <div className="flex items-center hover:bg-dark-gray hover:text-white">
-            <img src="assets/Iteration-2-aseets/icons/3.svg" alt="" />
+            <img src="Assets/Iteration-2-aseets/icons/3.svg" alt="" />
             Burger
           </div>
           <div className="flex items-center hover:bg-dark-gray hover:text-white">
-            <img src="assets/Iteration-2-aseets/icons/4.svg" alt="" />
+            <img src="Assets/Iteration-2-aseets/icons/4.svg" alt="" />
             Kızartmalar
           </div>
           <div className="flex items-center hover:bg-dark-gray hover:text-white ">
-            <img src="assets/Iteration-2-aseets/icons/5.svg" alt="" />
+            <img src="Assets/Iteration-2-aseets/icons/5.svg" alt="" />
             Fast Food
           </div>
           <div className="flex items-center hover:bg-dark-gray hover:text-white">
-            <img src="assets/Iteration-2-aseets/icons/6.svg" alt="" />
+            <img src="Assets/Iteration-2-aseets/icons/6.svg" alt="" />
             Gazlı İçecek
           </div>
         </div>
         <div className="flex justify-center gap-8 *:bg-white *:w-[419] *:h-[334] mt-8 pb-16">
           <Pizzacard
-            src="assets/Iteration-2-aseets/pictures/food-1.png"
+            src="Assets/Iteration-2-aseets/pictures/food-1.png"
             cname="Terminal Pizza"
           />
           <Pizzacard
-            src="assets/Iteration-2-aseets/pictures/food-2.png"
+            src="Assets/Iteration-2-aseets/pictures/food-2.png"
             cname="Position Absolute Acı Pizza"
           />
           <Pizzacard
-            src="assets/Iteration-2-aseets/pictures/food-3.png"
+            src="Assets/Iteration-2-aseets/pictures/food-3.png"
             cname="Position Absolute Acı Pizza"
           />
         </div>

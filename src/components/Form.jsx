@@ -7,7 +7,7 @@ import OrderSummary from "./OrderSummary";
 import Footer from "./Footer";
 
 function Form(props) {
-  const{setFormData}=props;
+  const { setFormData } = props;
   const extras = [
     "Pepperoni",
     "Tavuk Izgara",
@@ -169,7 +169,7 @@ function Form(props) {
         setSelectedExtras([]);
         setNote("");
         setQuantity(1);
-        setQuickDelivery(false)
+        setQuickDelivery(false);
         history.push({
           pathname: "/success",
           state: {
@@ -196,7 +196,7 @@ function Form(props) {
         <div className="flex flex-col items-center bg-[#FAF7F2]">
           <div className=" w-[532px] font-barlow mb-10">
             <img
-              src="assets/Iteration-2-aseets/pictures/form-banner.png"
+              src="Assets/Iteration-2-aseets/pictures/form-banner.png"
               alt=""
             />
             <h2 className=" leading-7 font-semibold text-2xl mt-8 h-14">
@@ -287,7 +287,11 @@ function Form(props) {
               </div>
               <div className="flex flex-wrap gap-7 w-[600px] mt-10 font-bold text-base text-[#5F5F5F] ">
                 {extras.map((e) => (
-                  <label className="container md:basis-40 basis-48" htmlFor={e} key={e}>
+                  <label
+                    className="container md:basis-40 basis-48"
+                    htmlFor={e}
+                    key={e}
+                  >
                     <input
                       type="checkbox"
                       className="mr-1"
@@ -327,7 +331,7 @@ function Form(props) {
                 </h3>
 
                 <div className="border w-[531px] h-14  rounded-md flex mb-9 ">
-                  <textarea 
+                  <textarea
                     onChange={handleNoteChange}
                     className=" w-full bg-[#FAF7F2] p-3"
                     value={note}
@@ -335,16 +339,16 @@ function Form(props) {
                   />
                 </div>
                 <label className="container">
-                <input
-                  type="checkbox"
-                  name="quickdel"
-                  onChange={handleDeliveryPrice}
-              
-                />
-                 
-                <span className=" checkmark"> </span>
-                <div >Hızlı Teslimat <span className="text-red">50₺</span> </div>
-              
+                  <input
+                    type="checkbox"
+                    name="quickdel"
+                    onChange={handleDeliveryPrice}
+                  />
+
+                  <span className=" checkmark"> </span>
+                  <div>
+                    Hızlı Teslimat <span className="text-red">50₺</span>{" "}
+                  </div>
                 </label>
                 <hr className="mb-10" />
               </div>

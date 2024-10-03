@@ -14,7 +14,7 @@ function Footer() {
                 <ul className="footer-address flex flex-col gap-6">
                   <li className="flex gap-2 items-start">
                     <img
-                      src="assets/Iteration-2-aseets/footer/icons/icon-1.png"
+                      src="Assets/Iteration-2-aseets/footer/icons/icon-1.png"
                       alt="adres"
                     />
                     341 Londonderry Road, <br />
@@ -22,7 +22,7 @@ function Footer() {
                   </li>
                   <li className="flex gap-2 items-start">
                     <img
-                      src="assets/Iteration-2-aseets/footer/icons/icon-2.png"
+                      src="Assets/Iteration-2-aseets/footer/icons/icon-2.png"
                       alt="mail"
                     />
                     <a href="mailto:aciktim@teknolojikyemekler.com">
@@ -31,7 +31,7 @@ function Footer() {
                   </li>
                   <li className="flex gap-2 items-start">
                     <img
-                      src="assets/Iteration-2-aseets/footer/icons/icon-3.png"
+                      src="Assets/Iteration-2-aseets/footer/icons/icon-3.png"
                       alt="tel"
                     />
                     <a href="tel:++90 216 123 45 67"> +90 216 123 45 67</a>
@@ -59,27 +59,27 @@ function Footer() {
             </h2>
             <div className="flex flex-wrap w-[347px] gap-4">
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-0.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-0.png"
                 alt="pizza"
               />
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-1.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-1.png"
                 alt="pizza"
               />
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-2.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-2.png"
                 alt="pizza"
               />
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-3.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-3.png"
                 alt="pizza"
               />
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-4.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-4.png"
                 alt="pizza"
               />
               <img
-                src="assets/Iteration-2-aseets/footer/insta/li-5.png"
+                src="Assets/Iteration-2-aseets/footer/insta/li-5.png"
                 alt="pizza"
               />
             </div>
@@ -91,7 +91,7 @@ function Footer() {
         <span className="font-light text-white">
           © 2023 Teknolojik Yemekler.
         </span>
-        <img src="/assets/iteration-2/footer/icons/twitterx.png" alt="" />
+        <img src="Assets/iteration-2/footer/icons/twitterx.png" alt="" />
       </div>
     </div>
   );
