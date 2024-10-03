@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import Pizzacard from "./pizzacard";
+import Pizzacard from "./Pizzacard";
 
 function Home() {
   return (
     <>
-     
-        <div className=" bg-[url('assets/Iteration-1-assets/home-banner.png')] bg-cover bg-no-repeat flex justify-center "> 
+      <div className=" bg-[url('assets/Iteration-1-assets/home-banner.png')] bg-cover bg-no-repeat flex justify-center ">
         <div className="flex flex-col items-center text-white pb-64 pt-10">
           <h1 className="font-londrina text-5xl mb-12">Teknolojik Yemekler</h1>
           <div className="flex flex-col items-center">
